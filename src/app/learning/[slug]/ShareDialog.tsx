@@ -1,6 +1,6 @@
 import React from "react";
 import { IoCopyOutline } from "react-icons/io5";
-import { toast } from "react-hot-toast";
+import { toast } from "sonner";
 
 interface ShareDialogProps {
   isOpen: boolean;
