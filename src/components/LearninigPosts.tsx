@@ -62,7 +62,7 @@ export default function LearninigPosts() {
   return (
     <section
       id="learning"
-      className="py-20 md:py-40 px-4 bg-gradient-to-tr from-primary/10"
+      className="py-10 md:py-40 px-4 bg-gradient-to-tr from-primary/10"
     >
       <div className="container m-auto w-full">
         <motion.div
@@ -70,12 +70,12 @@ export default function LearninigPosts() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-6 md:mb-12"
         >
-          <h2 className="logo text-4xl md:text-6xl font-bold mb-5">
+          <h2 className="logo text-3xl md:text-6xl font-bold mb-5">
             Learning Posts
           </h2>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-foreground/80 max-w-2xl mx-auto">
             Discover our most popular and recently published articles
           </p>
         </motion.div>
@@ -89,33 +89,28 @@ export default function LearninigPosts() {
             posts.map((post) => (
               <motion.div
                 key={post._id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+                transition={{ duration: 1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -20 }}
               >
-                <Card className="h-full flex flex-col transition-shadow hover:shadow-lg">
-                  <CardHeader>
-                    <span className="text-sm text-primary font-medium">
-                      {post.category}
-                    </span>
-                    <CardTitle className="text-xl">{post.title}</CardTitle>
-                    <CardDescription>
-                      {new Date(post.date).toLocaleDateString()}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    {post.summary}
-                  </CardContent>
-                  <div className="px-6 pb-6">
-                    <Button asChild variant="outline">
-                      <Link href={"/learning/" + post.slug.current}>
-                        Read More
-                      </Link>
-                    </Button>
-                  </div>
-                </Card>
+                <Link href={"/learning/" + post.slug.current}>
+                  <Card className="min-h-60 md:min-h-72 flex flex-col transition-shadow hover:shadow-lg gap-3 md:gap-5">
+                    <CardHeader>
+                      <span className="text-xs md:text-sm text-primary font-medium">
+                        {post.category}
+                      </span>
+                      <CardTitle className="text-base md:text-xl">{post.title}</CardTitle>
+                      <CardDescription className="text-sm md:text-base">
+                        {new Date(post.date).toLocaleDateString()}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex-grow text-sm md:text-base">
+                      {post.summary}
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))
           )}
@@ -126,9 +121,9 @@ export default function LearninigPosts() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-6 md:mt-12"
         >
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="p-6 md:px-10 font-normal text-base hover:scale-110 transition-all duration-500">
             <Link href="/blogs">View All Posts</Link>
           </Button>
         </motion.div>

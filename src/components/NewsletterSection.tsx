@@ -24,7 +24,7 @@ export function NewsletterSection() {
   return (
     <section
       id="newsletter"
-      className="py-20 md:py-40 px-4 bg-gradient-to-tr from-primary/10"
+      className="py-14 md:py-40 px-4 bg-gradient-to-tr from-primary/10"
     >
       <div className="container">
         <motion.div
@@ -34,10 +34,10 @@ export function NewsletterSection() {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="logo text-4xl md:text-6xl font-bold mb-5">
+          <h2 className="logo text-3xl md:text-6xl font-bold mb-5">
             Stay Updated
           </h2>
-          <p className="text-lg text-foreground/80 mb-8">
+          <p className="text-base md:text-lg text-foreground/80 mb-8">
             Subscribe to our newsletter to get the latest articles and updates
             delivered straight to your inbox.
           </p>
@@ -46,7 +46,7 @@ export function NewsletterSection() {
             onSubmit={handleSubmit}
             className="flex flex-col sm:flex-row relative"
           >
-            <div className=" flex-grow">
+            <div className="flex-grow">
               <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 size-5 text-primary" />
               <Input
                 type="email"

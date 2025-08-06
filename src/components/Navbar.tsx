@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GrSun } from "react-icons/gr";
 import { PiMoon } from "react-icons/pi";
-import ContactModal from "./ContactModal";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -26,9 +25,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Blogs", href: "/blogs" },
-    { name: "Learning", href: "/#learning" },
     { name: "General", href: "/general" },
+    { name: "Learning", href: "/#learning" },
     { name: "About", href: "/#about" },
   ];
 
@@ -37,7 +35,7 @@ export default function Navbar() {
       <div className="container flex p-4 items-center justify-between mx-auto w-full">
         <Link href="/" className="inline-flex items-center gap-2 md:gap-3">
           <Image
-            src="/logo.svg"
+            src="/logo.jpg"
             alt="logo"
             width={100}
             height={100}
@@ -53,12 +51,15 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium transition-colors hover:text-blue-500"
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                pathname === link.href
+                  ? "text-primary"
+                  : "text-muted-foreground"
+              }`}
             >
               {link.name}
             </Link>
           ))}
-          <ContactModal />
         </div>
 
         <div className="flex items-center">
@@ -84,29 +85,19 @@ export default function Navbar() {
       {/* Subnavbar for mobile only */}
       <div className="sticky top-0 block md:hidden border-dashed border-y w-full">
         <div className="container mx-auto flex justify-around p-4 w-full">
-          <Link
-            href="/"
-            className={`text-sm font-medium transition-colors hover:text-primary ${
-              pathname === "/" ? "text-primary" : "text-muted-foreground"
-            }`}
-          >
-            Home
-          </Link>
-          <Link
-            href="/blogs"
-            className={`text-sm font-medium transition-colors hover:text-primary ${
-              pathname === "/blogs" ? "text-primary" : "text-muted-foreground"
-            }`}
-          >
-            Blogs
-          </Link>
-          <Link
-            href="/#about"
-            className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground focus:text-primary"
-          >
-            About
-          </Link>
-          <ContactModal />
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                pathname === link.href
+                  ? "text-primary"
+                  : "text-muted-foreground"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>
